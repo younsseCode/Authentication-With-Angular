@@ -1,0 +1,18 @@
+<div *ngIf="isAuthentificationPages()">
+  <router-outlet></router-outlet>
+</div>
+
+<div *ngIf="!isAuthentificationPages()">
+  <div *ngIf="!isAdminPage()">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+<div *ngIf="isAdminPage()">
+  <app-header></app-header>
+  <app-sidebar>
+    <router-outlet></router-outlet>
+  </app-sidebar>
+</div>
