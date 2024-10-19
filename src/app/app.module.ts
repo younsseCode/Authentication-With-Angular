@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxFileDropModule } from 'ngx-file-drop';
 
@@ -28,6 +28,9 @@ import { ProfileComponent } from './administrateur/profile/profile.component';
 import { AdminProjectsComponent } from './administrateur/admin-projects/admin-projects.component';
 import { ListProjectsComponent } from './administrateur/list-projects/list-projects.component';
 import { ManageSkillsComponent } from './administrateur/manage-skills/manage-skills.component';
+import { UpdateSkillComponent } from './administrateur/update-skill/update-skill.component';
+import { CreateProjectComponent } from './administrateur/create-project/create-project.component';
+import { authInterceptor } from './services/auth.interceptor';
 
 
 @NgModule({
@@ -52,7 +55,9 @@ import { ManageSkillsComponent } from './administrateur/manage-skills/manage-ski
     AdminProjectsComponent,
     ListProjectsComponent,
     SkillsComponent,
-    ManageSkillsComponent
+    ManageSkillsComponent,
+    UpdateSkillComponent,
+    CreateProjectComponent
     ],
   imports: [
     BrowserModule,
@@ -66,6 +71,7 @@ import { ManageSkillsComponent } from './administrateur/manage-skills/manage-ski
     provideClientHydration(),
     provideHttpClient(),
     provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([authInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

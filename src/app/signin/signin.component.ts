@@ -36,8 +36,8 @@ export class SigninComponent implements OnInit{
         console.log(res);
         alert(res);
         if(res != null){
-          const jwtToken = res;
-          localStorage.setItem('jwt',jwtToken);
+          const token = res;
+          localStorage.setItem('token',token);
           this.router.navigateByUrl('admin/dashboard');
         }
       }

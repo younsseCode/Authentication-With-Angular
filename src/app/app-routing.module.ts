@@ -19,6 +19,8 @@ import { authGuard } from './services/auth.guard'; // Import your function-based
 import { AdminProjectsComponent } from './administrateur/admin-projects/admin-projects.component';
 import { ListProjectsComponent } from './administrateur/list-projects/list-projects.component';
 import { ManageSkillsComponent } from './administrateur/manage-skills/manage-skills.component';
+import { UpdateSkillComponent } from './administrateur/update-skill/update-skill.component';
+import { CreateProjectComponent } from './administrateur/create-project/create-project.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent , canActivate: [authGuard] },
@@ -38,10 +40,11 @@ const routes: Routes = [
   { path: 'admin/dashboard', component: DashboardComponent , canActivate: [authGuard] },
   { path: 'admin/list', component: ListUsersComponent , canActivate: [authGuard] },
   { path: 'admin/updateProfile', component: ProfileComponent , canActivate: [authGuard] },
-  { path: 'admin/addProject', component: AdminProjectsComponent , canActivate: [authGuard] },
+  // { path: 'admin/addProject', component: AdminProjectsComponent , canActivate: [authGuard] },
   { path: 'admin/listProjects', component: ListProjectsComponent , canActivate: [authGuard] },
   { path: 'admin/manageSkills', component: ManageSkillsComponent , canActivate: [authGuard] },
-  { path: 'admin/manageSkills/:idSkill', component: ManageSkillsComponent , canActivate: [authGuard] },
+  { path: 'admin/updateSkill/:idSkill', component: UpdateSkillComponent , canActivate: [authGuard] },
+  { path: 'admin/createProject', component: CreateProjectComponent , canActivate: [authGuard] },
 
 ];
 

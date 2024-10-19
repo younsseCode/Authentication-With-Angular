@@ -18,7 +18,7 @@ export class SidebarComponent {
 
   logout() {
     // Remove the token from localStorage
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     
     // Optionally clear all localStorage/sessionStorage data
     // localStorage.clear(); // if you want to clear all data

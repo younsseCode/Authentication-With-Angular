@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PortfolioService } from '../../services/portfolio.service';
 import { ISkills } from '../model/User';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-skills',
@@ -14,10 +15,11 @@ export class ManageSkillsComponent implements OnInit{
   addSkillForm! : FormGroup;
   varInput : string = '';
   defaultInput : string = 'write anything her ...';
-  btnSaveAndUpdate : Boolean = true;
+  idSkill! : number;
 
   portfolioService = inject(PortfolioService)
-  constructor( private fb : FormBuilder ){ }
+  constructor( private fb : FormBuilder,
+               private router : Router ){ }
 
 
   ngOnInit(): void {
@@ -84,27 +86,9 @@ export class ManageSkillsComponent implements OnInit{
   }
 
 
-  openUpdateForm()  {
-    this.btnSaveAndUpdate = false;
-    // this.addSkillForm.value
-    // return  this.varInput  = this.addSkillForm.patchValue(
-    //   {nameSkill :''}
-    // )
-  }
-
-
-  handelUpdateSkill(idSkill: number) {   // oui
-
-    this.portfolioService.updateSkill(idSkill).subscribe({
-      next: () => {
-        // Pour actualiser la liste des artisans après suppression
-        alert("skill update succesfully");
-        this.getAllSkills();
-      },
-      error: (err) => {
-        console.error("error at the update : ", err);
-      }
-    });
+  openUpdateForm(idSkill: number) {
+    this.router.navigateByUrl("admin/updateSkill/"+ idSkill)
+    console.log("to : " + idSkill);
   }
 
 }

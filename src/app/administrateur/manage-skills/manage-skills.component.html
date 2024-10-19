@@ -10,13 +10,13 @@
       
           <div class="mt-5">
             <!-- [formGroup]="addSkillForm" (ngSubmit)="submitForm()" -->
-            <form [formGroup]="addSkillForm"  >
+            <form [formGroup]="addSkillForm">
               <div class="grid gap-y-4">
                 <!-- Form Group -->
                 <div>
                   <label for="nameSkill" class="block text-sm mb-2 dark:text-white">nameSkill</label>
                   <div class="relative">
-                    <input [(ngModel)]="varInput" [placeholder]="defaultInput" type="text" id="nameSkill" name="nameSkill" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"  formControlName="nameSkill">
+                    <input  [placeholder]="defaultInput" type="text" id="nameSkill" name="nameSkill" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"  formControlName="nameSkill">
 
                     <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                       <svg class="size-5 text-red-500" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -26,12 +26,9 @@
                   </div>
                 </div>
 
-                @if (btnSaveAndUpdate) {
                   <button (click)="submitForm()" [disabled]="addSkillForm.invalid" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" >Save</button>
-                }
-                @else {
-                <button  class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" [disabled]="addSkillForm.invalid">Update</button>
-                }
+
+                
               </div>
             </form>
             <!-- End Form -->
@@ -184,7 +181,7 @@
                 </td>
 
                 <td class="size-px whitespace-nowrap">
-                  <button class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-neutral-700" (click)="openUpdateForm()">
+                  <button class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-neutral-700" (click)="openUpdateForm(item.idSkill)">
                     Update
                   </button>
                 </td>

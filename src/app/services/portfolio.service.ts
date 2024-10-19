@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IProject, ISkills, IUser } from '../administrateur/model/User';
 import { Router } from '@angular/router';
@@ -28,51 +28,67 @@ export class PortfolioService {
   
   // list all users :
   public listUsers():Observable<any>{
-    return this.http.get(this.apiUrl+"api/users");
+    // const token = localStorage.getItem('token');  // Retrieve the token stored after login
+    // const headers = {
+    //   'Authorization': `Bearer ${token}`,  // Attach the JWT token
+    //   'Content-Type': 'application/json'   // Set content type
+    // };
+    // console.log("wselt l headers : " + headers)
+    return this.http.get(this.apiUrl+"api/users",
+      {headers: this.createAuthorizationHeader()})
   }
 
 
-    // create} user :
+  private createAuthorizationHeader(): HttpHeaders{
+    console.log("wselt l methode");
+    const token = localStorage.getItem('token');
+    if (token){
+      console.log(" token found");
+      return new HttpHeaders().set(
+        "Authorization", "Bearer " + token
+      )
+    }else {
+        console.log("Token not found") 
+    }
+    return new HttpHeaders;
+  }
+
+
+  // create} user :
   public addUser(user : any): Observable<any>{
     return this.http.post(this.apiUrl+ "api/addUser", user);
   }
-
-
-    // Authentification :
-    public auth(user : any): Observable<any>{
-      return this.http.post(this.apiUrl+ "api/auth", user, { responseType: 'text' });
-    }
-
-    //Logout
-    logout() {
-      // Remove the token from localStorage
-      localStorage.removeItem('jwt');
-      
-      // Optionally clear all localStorage/sessionStorage data
-      // localStorage.clear(); // if you want to clear all data
-      
-      // Navigate back to the login page (or home page)
-      this.router.navigateByUrl('/signin'); // Adjust the path to your login route
-      alert("are you shur");
-    }
 
   // delete user :
   public deleteUser(idUser : number): Observable<any>{
     return this.http.delete(this.apiUrl+ "api/deleteUser/"+ idUser);
   }
 
+  // Authentification :
+  public auth(user : any): Observable<any>{
+    return this.http.post(this.apiUrl+ "api/auth", user, { responseType: 'text' });
+  }
+
+  //Logout
+  logout() {
+    // Remove the token from localStorage
+    localStorage.removeItem('token');
+    
+    // Optionally clear all localStorage/sessionStorage data
+    // localStorage.clear(); // if you want to clear all data
+    
+    // Navigate back to the login page (or home page)
+    this.router.navigateByUrl('/signin'); // Adjust the path to your login route
+    alert("are you shur");
+  }
+
+
   /* 
-
-
-
   // update user :
   public updateUser(idUser : number){
     return this.http.delete(this.apiUrl+ "/deleteUser", idUser);
   }
-
    */
-
-
 
 
   // DES METHODES POUR CRUD PROJECT !
@@ -82,16 +98,20 @@ export class PortfolioService {
     return this.http.get(this.apiUrl+"projects");
   }
 
-    // create} project :
-  public addProject(project : any): Observable<any>{
-    return this.http.post(this.apiUrl+ "api/project/addProject", project);
+  // create project :
+  // public addProject(project : any): Observable<any>{
+  //   return this.http.post(this.apiUrl+"createProject", project );
+  // }
+
+  // delete project :
+  public deleteProject(idProjet : number){
+    return this.http.delete(this.apiUrl+ "deleteProject/"+ idProjet);
   }
 
-
-    // delete user :
-    public deleteProject(idProjet : number){
-      return this.http.delete(this.apiUrl+ "api/project/deleteProject/"+ idProjet);
-    }
+  // create project :
+  public createProject(project : any): Observable<any>{
+    return this.http.post(this.apiUrl+ "createProject", project);
+  }
 
 
 
@@ -104,7 +124,7 @@ export class PortfolioService {
     return this.http.get(this.apiUrl+"skills");
   }
 
-  // create} project :
+  // create skill :
   public addSkill(skill : any): Observable<any>{
     return this.http.post(this.apiUrl+ "addSkills", skill);
   }
@@ -114,12 +134,17 @@ export class PortfolioService {
     return this.http.delete(this.apiUrl+ "deleteSkill/"+ idSkill);
   }
 
-
-   // update skill :
-   public updateSkill(idSkill : number){
-    return this.http.put(this.apiUrl+ "updateSkill/",idSkill);
+  //get Skill By ID
+  public getSkillById(idSkill : number){
+    return this.http.get(this.apiUrl + "skills/"+ idSkill);
   }
 
-  
+  // update skill :
+  public updateSkill(skill : any) : Observable<any>{
+    return this.http.put<any>(this.apiUrl+ "updateSkill/"+ skill.idSkill, skill);
+  }
+
+
+
 
 }

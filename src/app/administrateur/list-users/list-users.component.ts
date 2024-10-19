@@ -19,9 +19,6 @@ export class ListUsersComponent implements OnInit{
   user! : IUser;
 
   portfolioService = inject(PortfolioService)
-  // constructor(http : HttpClient){
-
-  // }
 
 
   ngOnInit(): void {
@@ -32,6 +29,7 @@ export class ListUsersComponent implements OnInit{
 
   getAllUsers(){ //oui
     this.portfolioService.listUsers().subscribe((res:any)=>{
+      console.log(res);
       this.userList = res;
     })
   }

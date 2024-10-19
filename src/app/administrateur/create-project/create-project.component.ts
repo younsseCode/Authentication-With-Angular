@@ -1,18 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PortfolioService } from '../../services/portfolio.service';
-// import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
-
-// import { cloneDeep } from 'lodash';
-// import Dropzone from 'dropzone';
-
 
 @Component({
-  selector: 'app-admin-projects',
-  templateUrl: './admin-projects.component.html',
-  styleUrl: './admin-projects.component.css'
+  selector: 'app-create-project',
+  templateUrl: './create-project.component.html',
+  styleUrl: './create-project.component.css'
 })
-export class AdminProjectsComponent  implements OnInit{
+export class CreateProjectComponent implements OnInit{
 
 
   // public files: NgxFileDropEntry[] = [];
@@ -32,15 +27,7 @@ export class AdminProjectsComponent  implements OnInit{
     })
   }
   
-  // onFileChange(event: any) {
-  //   const file = (event.target as HTMLInputElement).files?.[0];
-  //   if (file) {
-  //     this.saveProjectForm.patchValue({
-  //       photo: file
-  //     });
-  //     this.saveProjectForm.get('photo')?.updateValueAndValidity();
-  //   }
-  // }
+  
 
   submitForm(){
     console.log(this.saveProjectForm.value);
@@ -49,12 +36,7 @@ export class AdminProjectsComponent  implements OnInit{
       {
         if (res.idProjet != null){
           alert("Hello "+ res.nomProjet);
-          this.saveProjectForm = this.fb.group({
-            nomProjet:[''],
-            description:[''],
-            photo:[''],
-            dateProjet:['']
-          })
+          
         }
       }
     ) 

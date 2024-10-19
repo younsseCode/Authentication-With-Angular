@@ -7,7 +7,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   // Check if running in the browser
   if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem('token');
 
     if (token) {
       // Token exists, allow access to the route
@@ -25,7 +25,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
 
 
-  // const token = localStorage.getItem('jwt');
+  // const token = localStorage.getItem('token');
 
   // if (token) {
   //   // Token exists, allow access to the route
