@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
-  currentComponent="projects";
+  currentComponent="home";
 
   changeTab(nameTab : string){
     this.currentComponent= nameTab;

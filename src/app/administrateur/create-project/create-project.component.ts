@@ -19,11 +19,8 @@ export class CreateProjectComponent implements OnInit{
 
   ngOnInit(): void {
     this.saveProjectForm = this.fb.group({
-      idProjet:[''],
       nomProjet:[''],
-      description:[''],
-      photo:[''],
-      dateProjet:['']
+      description:['']
     })
   }
   

@@ -1,5 +1,7 @@
-<div class="ml-36 mr-36 mt-12">
-    <div class="ml-36 mr-36 mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-neutral-900 dark:border-neutral-700">
+<div class="container mx-auto mb-10">
+
+
+  <div class="ml-36 mr-36 mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-neutral-900 dark:border-neutral-700">
         <div class="p-4 sm:p-7">
           <div class="text-center">
             <h1 class="block text-2xl font-bold text-gray-800 dark:text-white">Add Skill</h1>
@@ -14,7 +16,7 @@
               <div class="grid gap-y-4">
                 <!-- Form Group -->
                 <div>
-                  <label for="nameSkill" class="block text-sm mb-2 dark:text-white">nameSkill</label>
+                  <label for="nameSkill" class="block text-sm mb-2 dark:text-white"></label>
                   <div class="relative">
                     <input  [placeholder]="defaultInput" type="text" id="nameSkill" name="nameSkill" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"  formControlName="nameSkill">
 
@@ -25,18 +27,14 @@
                     </div>
                   </div>
                 </div>
-
                   <button (click)="submitForm()" [disabled]="addSkillForm.invalid" class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" >Save</button>
-
-                
               </div>
             </form>
             <!-- End Form -->
           </div>
         </div>
-    </div>
   </div>
-
+</div>
 
 
 
@@ -44,19 +42,24 @@
 
 
   <!-- Table Section -->
-<div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+<!-- <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto"> -->
+<div class="container mx-auto">
+
   <!-- Card -->
+   
   <div class="flex flex-col">
     <div class="-m-1.5 overflow-x-auto">
       <div class="p-1.5 min-w-full inline-block align-middle">
         <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-900 dark:border-neutral-700">
+          <h1 class="block text-center mt-6 text-2xl font-bold text-gray-800 dark:text-white">List Of Skills</h1>
+
           <!-- Header -->
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-neutral-700">
             <!-- Input -->
             <div class="sm:col-span-1">
               <label for="hs-as-table-product-review-search" class="sr-only">Search</label>
               <div class="relative">
-                <input  [(ngModel)]="searchText" type="text" id="hs-as-table-product-review-search" name="hs-as-table-product-review-search" class="py-2 px-3 ps-11 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600" placeholder="Search">
+                <input  [(ngModel)]="searchText" type="text" id="hs-as-table-product-review-search" name="hs-as-table-product-review-search" class="py-2 px-3 ps-56  border-gray-200 rounded-lg text-sm pl-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none " placeholder="Search">
                 <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4">
                   <svg class="size-4 text-gray-400 dark:text-neutral-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -187,7 +190,7 @@
                 </td>
 
 
-              <!-- other -->
+              <!-- button to select update or delete ... -->
               <!-- <td class="size-px whitespace-nowrap">
                 <div class="px-6 py-1.5">
                   <div class="hs-dropdown [--placement:bottom-right] relative inline-block">
@@ -213,13 +216,8 @@
                 </div>
               </td> -->
 
-
-
-
-
-                
+ 
               </tr>
-
             </tbody>
           </table>
           <!-- End Table -->
@@ -230,16 +228,6 @@
             <div >
               <div class="inline-flex gap-x-2">
                 <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
-                <!-- <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                  Prev
-                </button>
-
-                <button type="button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
-                  Next
-                  <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-                </button> -->
               </div>
             </div>
           </div>
@@ -267,30 +255,3 @@
 [nextLabel]="'Next'">
 <pagination-controls> -->
 
-  
-  <!-- hidden button -->
-  <div class="px-6 py-1.5" hidden>
-    <div class="hs-dropdown [--placement:bottom-right] relative inline-block">
-      <button id="hs-table-dropdown-1" type="button" class="hs-dropdown-toggle py-1.5 px-2 inline-flex justify-center items-center gap-2 rounded-lg text-gray-700 align-middle disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-blue-600 transition-all text-sm dark:text-neutral-400 dark:hover:text-white dark:focus:ring-offset-gray-800" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-      </button>
-      <div class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden divide-y divide-gray-200 min-w-40 z-10 bg-white shadow-2xl rounded-lg p-2 mt-2 dark:divide-neutral-700 dark:bg-neutral-800 dark:border dark:border-neutral-700" role="menu" aria-orientation="vertical" aria-labelledby="hs-table-dropdown-1">
-        <div class="py-2 first:pt-0 last:pb-0">
-          <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300" >
-            Rename
-          </a>
-          <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300" >
-            Regenrate Key
-          </a>
-          <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700 dark:focus:text-neutral-300" >
-            Disable
-          </a>
-        </div>
-        <div class="py-2 first:pt-0 last:pb-0">
-          <a class="flex items-center gap-x-3 py-2 px-3 rounded-lg text-sm text-red-600 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:text-red-500 dark:hover:bg-neutral-700" >
-            Delete
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
