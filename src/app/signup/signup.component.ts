@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { PortfolioService } from '../services/portfolio.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from '../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,7 +11,7 @@ export class SignupComponent implements OnInit {
 
   registerForm! : FormGroup;
   
-  portfolioService = inject(PortfolioService)
+  authService = inject(AuthService)
   constructor(
     private fb : FormBuilder
   ){ }
@@ -20,7 +20,6 @@ export class SignupComponent implements OnInit {
     this.registerForm = this.fb.group({
       firstname:[''],
       lastname:[''],
-      username:[''],
       email:[''],
       password:['']
     })    
@@ -28,7 +27,7 @@ export class SignupComponent implements OnInit {
   
   submitForm(){
     console.log(this.registerForm.value);
-    this.portfolioService.addUser(this.registerForm.value).subscribe(
+    this.authService.signup(this.registerForm.value).subscribe(
       (res)=>
       {
         if (res.idUser != null){
@@ -38,6 +37,5 @@ export class SignupComponent implements OnInit {
     )
   }
 
-
-
+  
 }
